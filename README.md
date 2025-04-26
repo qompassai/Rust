@@ -11,22 +11,10 @@
   <a href="https://www.gnu.org/licenses/agpl-3.0"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" alt="License: AGPL v3"></a>
   <a href="./LICENSE-QCDA"><img src="https://img.shields.io/badge/license-Q--CDA-lightgrey.svg" alt="License: Q-CDA"></a>
 </p>
-<p align="center">
-  <a href="https://www.lua.org/"><img src="https://img.shields.io/badge/Lua-2C2D72?style=for-the-badge&logo=lua&logoColor=white" alt="Lua"></a>
-  <br>
-  <a href="https://www.lua.org/docs.html"><img src="https://img.shields.io/badge/Lua-Documentation-blue?style=flat-square" alt="Lua Documentation"></a>
-  <a href="https://github.com/topics/lua-tutorial"><img src="https://img.shields.io/badge/Lua-Tutorials-green?style=flat-square" alt="Lua Tutorials"></a>
-  <br>
-  <a href="https://www.gnu.org/licenses/agpl-3.0"><img src="https://img.shields.io/badge/License-AGPL%20v3-blue.svg" alt="License: AGPL v3"></a>
-  <a href="./LICENSE-QCDA"><img src="https://img.shields.io/badge/license-Q--CDA-lightgrey.svg" alt="License: Q-CDA"></a>
-</p>
+### 📄 Rust Projects
 
-### 📄 Lua Projects
-
-- [Qompass Diver](https://github.com/qompassai/Diver)
-- [Qompass rose.nvim](https://github.com/qompassai/rose.nvim)
-- [Qompass blaze.nvim](https://github.com/qompassai/blaze.nvim)
-- [Qompass blaze-ts.nvim](https://github.com/qompassai/blaze-ts.nvim)
+- [Qompass Volta](https://github.com/qompassai/volta)
+- [Qompass Vongola](https://github.com/qompassai/vongola)
 
 ---
 
