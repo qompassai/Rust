@@ -2,6 +2,8 @@
 
 <h2 align="center">Educational Content on the Rust Programming Language</h2>
 
+![Repository Views](https://komarev.com/ghpvc/?username=qompassai-rust)
+
 <p align="center">
   <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" alt="Rust"></a>
   <br>
@@ -16,6 +18,7 @@
 
 - [Qompass Volta](https://github.com/qompassai/volta)
 - [Qompass Vongola](https://github.com/qompassai/vongola)
+- [Qompass Hold](https://github.com/qompassai/qompass-hold)
 
 ---
 
