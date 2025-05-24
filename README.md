@@ -188,23 +188,6 @@ Where:
 
 </details>
 
-<details id="Zenodo DOI">
-  <summary><strong>Digital Object Identifier (DOI) for public transparency and accountability</strong></summary>
-Badge
-
-
-```markdown
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.xxxxxx.svg)](https://doi.org/10.5281/zenodo.xxxxxx)
-```
-
----
-
-- See `.zenodo.json` for metadata, authorship, licensing, and related software attribution.
-</details>
-
-## 🧭 Attribution
-
-
 
 <details id="Dual-License Notice">
   <summary><strong>What a Dual-License Means</strong></summary>
@@ -256,11 +239,7 @@ By offering both open source and commercial licensing options, we strive to crea
 </div>
 </details>
 
-![Repository Views](https://komarev.com/ghpvc/?username=qompassai-Rust)
 
-<p align="center">
-  <i>Last Updated: <timestamp></i>
-</p>
 
 
 # How to Install Rust for Windows, MacOs & Linux 
