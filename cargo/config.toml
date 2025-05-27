@@ -1,0 +1,73 @@
+# /qompassai/rust/cargo/config.toml
+# ------------------------------------
+# Copyright (C) 2025 Qompass AI, All rights reserved
+
+[build]
+pipelining = true
+jobs = 4
+
+[alias]
+b = "build"
+r = "run"
+t = "test"
+zig-x86_64-release = "cargo zigbuild --release --target x86_64-unknown-linux-gnu"
+zig-aarch64-release = "cargo zigbuild --release --target aarch64-unknown-linux-gnu"
+zigtest-aarch64 = "cargo zigbuild test --target aarch64-unknown-linux-gnu"
+zigrun-aarch64 = "cargo zigbuild run --target aarch64-unknown-linux-gnu"
+
+[target.x86_64-unknown-linux-gnu]
+rustflags = [
+  "-C",
+  "link-arg=--target=x86_64-linux-gnu",
+  "-C",
+  "link-arg=-fuse-ld=lld",
+]
+
+[target.aarch64-unknown-linux-gnu]
+cc = "zig cc -target aarch64-unknown-linux-gnu"
+linker = "zig cc -target aarch64-unknown-linux-gnu"
+
+[target.x86_64-unknown-linux-musl]
+rustflags = ["-C", "link-arg=-target=x86_64-linux-musl"]
+
+[env]
+SCCACHE_DIR = "/home/phaedrus/.local/bin/sccache"
+SCCACHE_IDLE_TIMEOUT = "1200"
+CARGO_INCREMENTAL = "0"
+CARGO_ZIGBUILD_RELEASE = "true"
+CARGO_ZIGBUILD_VERBOSE = "true"
+ZIG_TARGET_DIR = "/home/phaedrus/.cache/target"
+ZIG_GLOBAL_CACHE_DIR = "/home/phaedrus/.cache/zig"
+
+#[profile.release]
+#codegen-units = 1
+#debug = false
+#strip = "symbols"
+#panic = "abort"
+
+[registries.crates-io]
+protocol = "sparse"
+
+[registry]
+default = "crates-io"
+
+[term]
+verbose = true
+color = "auto"
+
+[future-incompat-report]
+frequency = "always"
+
+[unstable]
+gc = true
+script = true
+#build-std = ["std", "panic_abort"]
+#build-std-features = ["panic_immediate_abort"]
+
+[http]
+debug = false
+ssl-version = "tlsv1.3"
+timeout = 60
+
+[net]
+retry = 3
