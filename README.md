@@ -1,6 +1,7 @@
-<!-- /qompassai/rust/README.md -->
-<!-- ---------------------------- -->
+<!--------------- /qompassai/rust/README.md -------------->
+<!--------------------Qompass AI Rust -------------------->
 <!-- Copyright (C) 2025 Qompass AI, All rights reserved -->
+<!-- ----------------------------------------------------->
 
 <h1 align="center">Qompass AI on Rust</h1>
 
@@ -8,6 +9,7 @@
 
 ![Repository Views](https://komarev.com/ghpvc/?username=qompassai-rust)
 ![GitHub all releases](https://img.shields.io/github/downloads/qompassai/rust/total?style=flat-square)
+
 <p align="center">
   <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white" alt="Rust"></a>
   <br>
@@ -20,15 +22,24 @@
 
 <details>
   <summary style="font-size: 1.4em; font-weight: bold; padding: 15px; background: #667eea; color: white; border-radius: 10px; cursor: pointer; margin: 10px 0;">
-    <strong>▶️ Rust Solutions</strong>
+    <strong>
+      <img src="https://www.rust-lang.org/logos/rust-logo-blk.svg" alt="Rust logo" style="height: 1.2em; vertical-align: -0.2em; margin-right: 0.25em;" />
+      Rust Solutions
+    </strong>
   </summary>
   <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 10px; font-family: monospace;">
 
-- [Qompass Volta](https://github.com/qompassai/volta)
-- [Qompass Vongola](https://github.com/qompassai/vongola)
-- [Qompass Hold](https://github.com/qompassai/qompass-hold)
+* [Qompass.AI](https://github.com/qompassai/qai)
+* [Qompass Bunker](https://github.com/qompassai/bunker)
+* [Qompass Hold](https://github.com/qompassai/qompass-hold)
+* [Qompass QXet](https://github.com/qompassai/qxet)
+* [Qompass on Tauri](https://github.com/qompassai/tauri)
+* [Qompass Volta](https://github.com/qompassai/volta)
+* [Qompass Vongola](https://github.com/qompassai/vongola)
 
----
+  </div>
+
+</details>
 
 <details>
   <summary style="font-size: 1.4em; font-weight: bold; padding: 15px; background: #667eea; color: white; border-radius: 10px; cursor: pointer; margin: 10px 0;">
@@ -36,74 +47,161 @@
   </summary>
   <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 10px; font-family: monospace;">
 
-```bash  
-bash <(curl -L https://raw.githubusercontent.com/qompassai/dotfiles/main/scripts/quickstart.sh)
+```sh
+curl -fSsL https://raw.githubusercontent.com/qompassai/rust/main/scripts/quickstart.sh | sh
 ```
   </div>
   <blockquote style="font-size: 1.2em; line-height: 1.8; padding: 25px; background: #f8f9fa; border-left: 6px solid #667eea; border-radius: 8px; margin: 15px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
     <details>
       <summary style="font-size: 1em; font-weight: bold; padding: 10px; background: #e9ecef; color: #333; border-radius: 5px; cursor: pointer; margin: 10px 0;">
-        <strong>📄 We advise you read the script BEFORE running it 😉</strong>
+        <strong>📄 We STRONGLY advise you read the script BEFORE running it 😉</strong>
       </summary>
       <pre style="background: #fff; padding: 15px; border-radius: 5px; border: 1px solid #ddd; overflow-x: auto;">
-#!/usr/bin/env bash
-# /qompassai/dotfiles/scripts/quickstart.sh
-# Qompass AI Quick Start Script
+#!/bin/sh
+# /qompassai/rust/scripts/quickstart.sh
+# Qompass AI Rust Quick Start
 # Copyright (C) 2025 Qompass AI, All rights reserved
 ####################################################
-
-REPO="https://github.com/qompassai/dotfiles"
-TARGET_DIR="$HOME/.dotfiles"
-if [ -d "$TARGET_DIR" ]; then
-    echo "Removing existing dotfiles directory..."
-    rm -rf "$TARGET_DIR"
-fi
-echo "Cloning Qompass AI Dotfiles..."
-git clone "$REPO" "$TARGET_DIR"
-echo "Setting up symlinks..."
-mkdir -p "$HOME/.config/nix" "$HOME/.profile.d"
-ln -sf "$TARGET_DIR/.config/nix/nix.conf" "$HOME/.config/nix/nix.conf"
-ln -sf "$TARGET_DIR/.profile.d/67-nix.sh" "$HOME/.profile.d/67-nix.sh"
-mkdir -p "$HOME/.config"
-ln -sfn "$TARGET_DIR/home" "$HOME/.config/home" 2>/dev/null || true
-ln -sfn "$TARGET_DIR/.local" "$HOME/.local" 2>/dev/null || true
-ln -sf "$TARGET_DIR/flake.nix" "$HOME/.config/flake.nix" 2>/dev/null || true
-source "$HOME/.profile.d/67-nix.sh" 2>/dev/null || {
-    echo "WARNING: Could not source Nix profile configuration. Falling back to manual exporting"
-    export NIX_CONF_DIR="$HOME/.config/nix"
-    export NIX_STORE_DIR="$HOME/.nix/store"
-    export NIX_STATE_DIR="$HOME/.local/state/nix"
-    export NIX_LOG_DIR="$HOME/.local/state/nix/log"
-    export NIX_PROFILE_DIR="$HOME/.nix-profile"
-    export PATH="$NIX_PROFILE_DIR/bin:$PATH"
-}
-if ! command -v nix >/dev/null; then
-    echo "Installing Nix with custom configuration..."
-    mkdir -p /.nix/var/nix/{profiles,gcroots,db}
-    chown -R "$(whoami)" /.nix
-    sh <(curl -L https://nixos.org/nix/install) --daemon \
-        --nix-extra-conf-file "$NIX_CONF_DIR/nix.conf"
-    if [ -f '/.nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-        . '/.nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+set -eu
+IFS=' 
+	'
+LOCAL_PREFIX="$HOME/.local"
+BIN_DIR="$LOCAL_PREFIX/bin"
+CONFIG_DIR="$HOME/.config/rust"
+DATA_DIR="$HOME/.local/sharerust"
+mkdir -p "$BIN_DIR" "$CONFIG_DIR" "$DATA_DIR"
+case ":$PATH:" in
+*":$BIN_DIR:"*) ;;
+*) PATH="$BIN_DIR:$PATH" ;;
+esac
+export PATH
+NEEDED_TOOLS="git curl tar make clang bash"
+MISSING=""
+for tool in $NEEDED_TOOLS; do
+  if ! command -v "$tool" >/dev/null 2>&1; then
+    if [ -x "/usr/bin/$tool" ]; then
+      ln -sf "/usr/bin/$tool" "$BIN_DIR/$tool"
+      echo " → Added symlink for $tool in $BIN_DIR (not originally in PATH)"
+    else
+      MISSING="$MISSING $tool"
     fi
+  fi
+done
+if [ -n "$MISSING" ]; then
+  echo "⚠ Warning: The following tools are missing (not installed or not symlinkable):$MISSING"
+  echo "Please install them manually with your package manager to continue."
+  exit 1
 fi
-echo "Setting up Nix environment..."
-cd "$TARGET_DIR"
-nix flake update
-detect_shell() {
-    case "$(ps -p $$ -o comm=)" in
-        *bash*) echo "bash" ;;
-        *zsh*)  echo "zsh" ;;
-        *fish*) echo "fish" ;;
-        *)      echo "bash" ;;
-    esac
+cat <<EOF >"/tmp/rust_menu.$USER"
+1	Rust Stable (x86_64/Linux)	stable-x86_64-unknown-linux-gnu
+2	Rust Nightly (x86_64/Linux)	nightly-x86_64-unknown-linux-gnu
+3	Rust Stable (aarch64/Linux)	stable-aarch64-unknown-linux-gnu
+4	Rust Stable for Mac (x86_64/macos)	stable-aarch64-apple-darwin
+5	Rust Nightly for Mac (aarch64/macos)	nightly-aarch64-apple-darwin
+q	Quit
+a	All (Advanced)
+EOF
+printf '╭────────────────────────────────────────────╮\n'
+printf '│    Qompass AI · Rust Quick‑Start           │\n'
+printf '╰────────────────────────────────────────────╯\n'
+printf '    © 2025 Qompass AI. All rights reserved   \n\n'
+awk -F '\t' 'NF==3 {printf " %s) %s\n", $1, $2}' "/tmp/rust_menu.$USER"
+printf ' a) all   (Advanced)\n'
+printf ' q) quit\n\n'
+printf "Choose toolchains to install [1]: "
+read -r choice
+[ -z "$choice" ] && choice="a"
+[ "$choice" = "q" ] && exit 0
+VERSIONS=""
+if [ "$choice" = "a" ]; then
+  VERSIONS=$(awk -F '\t' 'NF==3 {print $3}' "/tmp/rust_menu.$USER")
+else
+  for sel in $choice; do
+    SELVER=$(awk -F '\t' -v k="$sel" '$1 == k {print $3}' "/tmp/rust_menu.$USER")
+    if [ -z "$SELVER" ]; then
+      echo "Unknown option: $sel"
+      rm -f "/tmp/rust_menu.$USER"
+      exit 1
+    fi
+    VERSIONS="$VERSIONS $SELVER"
+  done
+fi
+OS="unknown"
+case "$(uname -s)" in
+Linux*) OS="linux" ;;
+Darwin*) OS="macos" ;;
+CYGWIN* | MINGW* | MSYS*) OS="windows" ;;
+esac
+echo "==> Detected OS: $OS"
+add_path_to_shell_rc() {
+  rcfile=$1
+  line="export PATH=\"$BIN_DIR:\$PATH\""
+  if [ -f "$rcfile" ]; then
+    if ! grep -Fxq "$line" "$rcfile"; then
+      printf '\n# Added by Qompass AI Rust quickstart script\n%s\n' "$line" >>"$rcfile"
+      echo " → Added PATH export to $rcfile"
+    fi
+  fi
 }
-USER_SHELL=$(detect_shell)
-echo "Detected shell: $USER_SHELL"
-nix develop --command "$USER_SHELL"
-      </pre>
-    </details>
-    <p>Or, <a href="https://github.com/qompassai/dotfiles/blob/main/scripts/quickstart.sh" target="_blank">View the quickstart script</a>.</p>
+if ! command -v rustup >/dev/null 2>&1; then
+  echo "⚠ rustup not found. Installing rustup for $OS ..."
+  case "$OS" in
+  linux | macos)
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    PATH="$HOME/.cargo/bin:$PATH"
+    export PATH
+    add_path_to_shell_rc "$HOME/.bashrc"
+    add_path_to_shell_rc "$HOME/.zshrc"
+    add_path_to_shell_rc "$HOME/.profile"
+    ;;
+  windows)
+    echo "❌ Automated rustup installation is not supported on Windows by this script."
+    echo "➡ Please install it manually via https://rustup.rs/"
+    rm -f "/tmp/rust_menu.$USER"
+    exit 1
+    ;;
+  *)
+    echo "❌ Unknown OS. Cannot install rustup."
+    rm -f "/tmp/rust_menu.$USER"
+    exit 1
+    ;;
+  esac
+else
+  echo "✅ rustup found"
+fi
+COMPONENTS="cargo clippy rustfmt rust-src rust-docs rustc rust-analyzer llvm-tools-preview"
+TARGETS="x86_64-unknown-linux-musl x86_64-unknown-linux-gnu aarch64-unknown-linux-gnu aarch64-apple-darwin wasm32-wasi riscv64gc-unknown-linux-gnu aarch64-unknown-linux-rocm"
+CARGO_TOOLS="bacon bacon-ls bat cargo2nix crane cargo-zigbuild cross cargo-debugger cargo-lipo cargo-apk cargo-godot cargo-ndk maturin cargo-leptos cxxbridge-cmd flamegraph cargo-bloat cargo-udeps cargo-sweep nixpkgs-fmt"
+echo "==> Installing Rust toolchains..."
+for t in $VERSIONS; do
+  echo " ▪ Installing $t"
+  rustup toolchain install "$t"
+  echo "   Adding components to $t"
+  for c in $COMPONENTS; do
+    rustup component add "$c" --toolchain "$t" 2>/dev/null || true
+  done
+done
+echo "==> Adding cross-compilation targets..."
+for t in $VERSIONS; do
+  echo " ▪ Processing targets for $t"
+  for tgt in $TARGETS; do
+    rustup target add "$tgt" --toolchain "$t" 2>/dev/null || true
+  done
+done
+echo "==> Installing popular cargo tools..."
+for tool in $CARGO_TOOLS; do
+  echo " ▪ Installing $tool"
+  cargo install "$tool" --locked --force 2>/dev/null || true
+done
+if ! command -v zig >/dev/null 2>&1; then
+  cargo install zig --locked --force 2>/dev/null || true
+fi
+echo "✅ Rust cross-compilation environment setup complete!"
+echo "→ Please restart your terminal or run 'export PATH=\"$BIN_DIR:\$PATH\"' to update your PATH."
+rm -f "/tmp/rust_menu.$USER"
+exit 0 
+</pre> </details> <p>Or, <a href="https://github.com/qompassai/rust/blob/main/scripts/quickstart.sh" target="_blank">View the quickstart script</a>.</p>
+
   </blockquote>
 </details>
 
@@ -208,7 +306,7 @@ nix develop --command "$USER_SHELL"
 **Monero (XMR):**
 
 <div align="center">
-  <img src="./assets/monero-qr.png" alt="Monero QR Code" width="180">
+  <img src="https://www.github.com/qompassai/svg/assets/monero-qr.svg" alt="Monero QR Code" width="180">
 </div>
 
 <div style="margin: 10px 0;">
@@ -240,66 +338,66 @@ nix develop --command "$USER_SHELL"
 ## Forward Propagation Algorithm
 
 $$
-y = w_1x_1 + w_2x_2 + ... + w_nx_n + b
+y = w\_1x\_1 + w\_2x\_2 + ... + w\_nx\_n + b
 $$
 
 Where:
 
-- $y$ represents the model output
-- $(x_1, x_2, ..., x_n)$ are input features
-- $(w_1, w_2, ..., w_n)$ are feature weights
-- $b$ is the bias term
+* $y$ represents the model output
+* $(x\_1, x\_2, ..., x\_n)$ are input features
+* $(w\_1, w\_2, ..., w\_n)$ are feature weights
+* $b$ is the bias term
 
 ### Neural Network Activation
 
 For neural networks, the bias term is incorporated before activation:
 
 $$
-z = \\sum\_{i=1}^{n} w_ix_i + b
+z = \sum\_{i=1}^{n} w\_ix\_i + b
 $$
 $$
-a = \\sigma(z)
+a = \sigma(z)
 $$
 
 Where:
 
-- $z$ is the weighted sum plus bias
-- $a$ is the activation output
-- $\\sigma$ is the activation function
+* $z$ is the weighted sum plus bias
+* $a$ is the activation output
+* $\sigma$ is the activation function
 
 ### Attention Mechanism- aka what makes the Transformer (The "T" in ChatGPT) powerful
 
-- [Attention High level overview video](https://www.youtube.com/watch?v=fjJOgb-E41w)
+* [Attention High level overview video](https://www.youtube.com/watch?v=fjJOgb-E41w)
 
-- [Attention Is All You Need Arxiv Paper](https://arxiv.org/abs/1706.03762)
+* [Attention Is All You Need Arxiv Paper](https://arxiv.org/abs/1706.03762)
 
 The Attention mechanism equation is:
 
 $$
-\\text{Attention}(Q, K, V) = \\text{softmax}\\left( \\frac{QK^T}{\\sqrt{d_k}} \\right) V
+\text{Attention}(Q, K, V) = \text{softmax}\left( \frac{QK^T}{\sqrt{d\_k}} \right) V
 $$
 
 Where:
 
-- $Q$ represents the Query matrix
-- $K$ represents the Key matrix
-- $V$ represents the Value matrix
-- $d_k$ is the dimension of the key vectors
-- $\\text{softmax}(\\cdot)$ normalizes scores to sum to 1
+* $Q$ represents the Query matrix
+* $K$ represents the Key matrix
+* $V$ represents the Value matrix
+* $d\_k$ is the dimension of the key vectors
+* $\text{softmax}(\cdot)$ normalizes scores to sum to 1
 
 ### Q: Do I have to buy a Linux computer to use this? I don't have time for that!
 
 ### A: No. You can run Linux and/or the tools we share alongside your existing operating system:
 
-- Windows users can use Windows Subsystem for Linux [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
-- Mac users can use [Homebrew](https://brew.sh/)
-- The code-base instructions were developed with both beginners and advanced users in mind.
+* Windows users can use Windows Subsystem for Linux [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
+* Mac users can use [Homebrew](https://brew.sh/)
+* The code-base instructions were developed with both beginners and advanced users in mind.
 
 ### Q: Do you have to get a masters in AI?
 
 ### A: Not if you don't want to. To get competent enough to get past ChatGPT dependence at least, you just need a computer and a beginning's mindset. Huggingface is a good place to start.
 
-- [Huggingface](https://docs.google.com/presentation/d/1IkzESdOwdmwvPxIELYJi8--K3EZ98_cL6c5ZcLKSyVg/edit#slide=id.p)
+* [Huggingface](https://docs.google.com/presentation/d/1IkzESdOwdmwvPxIELYJi8--K3EZ98_cL6c5ZcLKSyVg/edit#slide=id.p)
 
 ### Q: What makes a "small" AI model?
 
@@ -312,30 +410,30 @@ Where:
 
 ### Protection for Vulnerable Populations
 
-The dual licensing aims to address the cybersecurity gap that disproportionately affects underserved populations. As highlighted by recent attacks<sup><a href="#ref1">[1]</a></sup>, low-income residents, seniors, and foreign language speakers face higher-than-average risks of being victims of cyberattacks. By offering both open-source and commercial licensing options, we encourage the development of cybersecurity solutions that can reach these vulnerable groups while also enabling sustainable development and support.
+The dual licensing aims to address the cybersecurity gap that disproportionately affects underserved populations. As highlighted by recent attacks<sup><a href="#ref1">\[1]</a></sup>, low-income residents, seniors, and foreign language speakers face higher-than-average risks of being victims of cyberattacks. By offering both open-source and commercial licensing options, we encourage the development of cybersecurity solutions that can reach these vulnerable groups while also enabling sustainable development and support.
 
 ### Preventing Malicious Use
 
-The AGPL-3.0 license ensures that any modifications to the software remain open source, preventing bad actors from creating closed-source variants that could be used for exploitation. This is especially crucial given the rising threats to vulnerable communities, including children in educational settings. The attack on Minneapolis Public Schools, which resulted in the leak of 300,000 files and a $1 million ransom demand, highlights the importance of transparency and security<sup><a href="#ref8">[8]</a></sup>.
+The AGPL-3.0 license ensures that any modifications to the software remain open source, preventing bad actors from creating closed-source variants that could be used for exploitation. This is especially crucial given the rising threats to vulnerable communities, including children in educational settings. The attack on Minneapolis Public Schools, which resulted in the leak of 300,000 files and a $1 million ransom demand, highlights the importance of transparency and security<sup><a href="#ref8">\[8]</a></sup>.
 
 ### Addressing Cybersecurity in Critical Sectors
 
-The commercial license option allows for tailored solutions in critical sectors such as healthcare, which has seen significant impacts from cyberattacks. For example, the recent Change Healthcare attack<sup><a href="#ref4">[4]</a></sup> affected millions of Americans and caused widespread disruption for hospitals and other providers. In January 2025, CISA<sup><a href="#ref2">[2]</a></sup> and FDA<sup><a href="#ref3">[3]</a></sup> jointly warned of critical backdoor vulnerabilities in Contec CMS8000 patient monitors, revealing how medical devices could be compromised for unauthorized remote access and patient data manipulation.
+The commercial license option allows for tailored solutions in critical sectors such as healthcare, which has seen significant impacts from cyberattacks. For example, the recent Change Healthcare attack<sup><a href="#ref4">\[4]</a></sup> affected millions of Americans and caused widespread disruption for hospitals and other providers. In January 2025, CISA<sup><a href="#ref2">\[2]</a></sup> and FDA<sup><a href="#ref3">\[3]</a></sup> jointly warned of critical backdoor vulnerabilities in Contec CMS8000 patient monitors, revealing how medical devices could be compromised for unauthorized remote access and patient data manipulation.
 
 ### Supporting Cybersecurity Awareness
 
-The dual licensing model supports initiatives like the Cybersecurity and Infrastructure Security Agency (CISA) efforts to improve cybersecurity awareness<sup><a href="#ref7">[7]</a></sup> in "target rich" sectors, including K-12 education<sup><a href="#ref5">[5]</a></sup>. By allowing both open-source and commercial use, we aim to facilitate the development of tools that support these critical awareness and protection efforts.
+The dual licensing model supports initiatives like the Cybersecurity and Infrastructure Security Agency (CISA) efforts to improve cybersecurity awareness<sup><a href="#ref7">\[7]</a></sup> in "target rich" sectors, including K-12 education<sup><a href="#ref5">\[5]</a></sup>. By allowing both open-source and commercial use, we aim to facilitate the development of tools that support these critical awareness and protection efforts.
 
 ### Bridging the Digital Divide
 
-The unfortunate reality is that too many individuals and organizations have gone into a frenzy in every facet of our daily lives<sup><a href="#ref6">[6]</a></sup>. These unfortunate folks identify themselves with their talk of "10X" returns and building towards Artificial General Intelligence aka "AGI" while offering GPT wrappers. Our dual licensing approach aims to acknowledge this deeply concerning predatory paradigm with clear eyes while still operating to bring the best parts of the open-source community with our services and solutions.
+The unfortunate reality is that too many individuals and organizations have gone into a frenzy in every facet of our daily lives<sup><a href="#ref6">\[6]</a></sup>. These unfortunate folks identify themselves with their talk of "10X" returns and building towards Artificial General Intelligence aka "AGI" while offering GPT wrappers. Our dual licensing approach aims to acknowledge this deeply concerning predatory paradigm with clear eyes while still operating to bring the best parts of the open-source community with our services and solutions.
 
 ### Recent Cybersecurity Attacks
 
 Recent attacks underscore the importance of robust cybersecurity measures:
 
-- The Change Healthcare cyberattack in February 2024 affected millions of Americans and caused significant disruption to healthcare providers.
-- The White House and Congress jointly designated October 2024 as Cybersecurity Awareness Month. This designation comes with over 100 actions that align the Federal government and public/private sector partners are taking to help every man, woman, and child to safely navigate the age of AI.
+* The Change Healthcare cyberattack in February 2024 affected millions of Americans and caused significant disruption to healthcare providers.
+* The White House and Congress jointly designated October 2024 as Cybersecurity Awareness Month. This designation comes with over 100 actions that align the Federal government and public/private sector partners are taking to help every man, woman, and child to safely navigate the age of AI.
 
 By offering both open source and commercial licensing options, we strive to create a balance that promotes innovation and accessibility. We address the complex cybersecurity challenges faced by vulnerable populations and critical infrastructure sectors as the foundation of our solutions, not an afterthought.
 

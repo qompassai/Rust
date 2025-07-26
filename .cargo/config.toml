@@ -1,6 +1,7 @@
-# /qompassai/rust/cargo/config.toml
-# ------------------------------------
+# /qompassai/rust/.cargo/config.toml
+# Qompass AI Rust Cargo Template
 # Copyright (C) 2025 Qompass AI, All rights reserved
+####################################################
 
 [build]
 pipelining = true
@@ -39,12 +40,6 @@ CARGO_ZIGBUILD_VERBOSE = "true"
 ZIG_TARGET_DIR = "/home/phaedrus/.cache/target"
 ZIG_GLOBAL_CACHE_DIR = "/home/phaedrus/.cache/zig"
 
-#[profile.release]
-#codegen-units = 1
-#debug = false
-#strip = "symbols"
-#panic = "abort"
-
 [registries.crates-io]
 protocol = "sparse"
 
@@ -53,16 +48,16 @@ default = "crates-io"
 
 [term]
 verbose = true
-color = "auto"
+quiet = false
+color = 'auto'
+hyperlinks = true
+unicode = true
+progress.when = 'auto'
+progress.width = 80
+progress.term-integration = true
 
 [future-incompat-report]
 frequency = "always"
-
-[unstable]
-gc = true
-script = true
-#build-std = ["std", "panic_abort"]
-#build-std-features = ["panic_immediate_abort"]
 
 [http]
 debug = false
@@ -71,3 +66,6 @@ timeout = 60
 
 [net]
 retry = 3
+
+[net.ssh]
+known-hosts = ["..."]
