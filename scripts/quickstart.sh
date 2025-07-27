@@ -1,5 +1,5 @@
 #!/bin/sh
-# /qompassai/rust/scripts/uickstart.sh
+# /qompassai/rust/scripts/quickstart.sh
 # Qompass AI Rust Quick Start
 # Copyright (C) 2025 Qompass AI, All rights reserved
 ####################################################
