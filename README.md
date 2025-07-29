@@ -23,7 +23,11 @@
 <details>
   <summary style="font-size: 1.4em; font-weight: bold; padding: 15px; background: #667eea; color: white; border-radius: 10px; cursor: pointer; margin: 10px 0;">
     <strong>
-      <img src="https://raw.githubusercontent.com/qompassai/svg/main/assets/icons/rust/ferris.svg" 1.2em; vertical-align: -0.2em; margin-right: 0.25em;" />
+      <img 
+  src="https://raw.githubusercontent.com/qompassai/svg/main/assets/icons/rust/ferris.svg"
+  alt="Ferris the Crab"
+  style="height: 1.2em; vertical-align: -0.2em; margin-right: 0.25em;" 
+/>
       Rust Solutions
     </strong>
   </summary>
