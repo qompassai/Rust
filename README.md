@@ -23,7 +23,7 @@
 <details>
   <summary style="font-size: 1.4em; font-weight: bold; padding: 15px; background: #667eea; color: white; border-radius: 10px; cursor: pointer; margin: 10px 0;">
     <strong>
-      <img src="https://raw.githubusercontent.com/phaedrus/Qompass/main/SVG/assets/icons/rust.svg" alt="Qompass AI Rust" style="height: 1.2em; vertical-align: -0.2em; margin-right: 0.25em;" />
+      <img src="https://raw.githubusercontent.com/qompassai/svg/assets/icons/rust.svg" alt="Qompass AI Rust" style="height: 1.2em; vertical-align: -0.2em; margin-right: 0.25em;" />
       Rust Solutions
     </strong>
   </summary>
