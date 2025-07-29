@@ -21,7 +21,6 @@
 </p>
 
 <details>
-  <summary style="font-size: 1.4em; font-weight: bold; padding: 15px; background: #667eea; color: white; border-radius: 10px; cursor: pointer; margin: 10px 0;"><details>
   <summary style="font-size: 1.4em; font-weight: bold; padding: 15px; background: #667eea; color: white; border-radius: 10px; cursor: pointer; margin: 10px 0;">
     <strong>
       <img src="https://raw.githubusercontent.com/qompassai/svg/main/assets/icons/rust/ferris.svg"
