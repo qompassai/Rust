@@ -9,7 +9,7 @@ IFS='
 LOCAL_PREFIX="$HOME/.local"
 BIN_DIR="$LOCAL_PREFIX/bin"
 CONFIG_DIR="$HOME/.config/rust"
-DATA_DIR="$HOME/.local/sharerust"
+DATA_DIR="$HOME/.local/share"
 mkdir -p "$BIN_DIR" "$CONFIG_DIR" "$DATA_DIR"
 case ":$PATH:" in
 *":$BIN_DIR:"*) ;;
