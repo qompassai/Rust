@@ -420,7 +420,6 @@ fn transcribe_audio(
     params.set_print_progress(false);
     params.set_print_timestamps(false);
     params.set_no_context(true);
-    // Voice activity detection — skip silent segments
     params.set_single_segment(false);
     params.set_token_timestamps(false);
 
@@ -450,12 +449,9 @@ fn transcribe_audio(
         text: text.trim().to_string(),
         language,
         duration,
-        elapsed: 0.0, // filled in by caller
+        elapsed: 0.0,
     })
 }
-
-// ── Tests ───────────────────────────────────────────────────────────────────
-
 #[cfg(test)]
 mod tests {
     use super::*;
