@@ -5,7 +5,7 @@
 **Decision**: Bevy guides live at `frameworks/bevy/` in qompassai/Rust,
 NOT in lumen.
 
-**Context**: Matt's call — framework guides belong with the language repo.
+**Context**: Owner's call — framework guides belong with the language repo.
 
 **Consequence**: Lumen references but does not host Bevy guides.
 
